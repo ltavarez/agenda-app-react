@@ -1,9 +1,28 @@
 import { Row, Col, Card } from "react-bootstrap";
-import UserItem from './UserItem/UserItem';
+import UserItem from "./UserItem/UserItem";
 import { useTranslation } from "react-i18next";
 
-const UserList = () => {
-const { t } = useTranslation();
+const UserList = (props) => {
+  const { t } = useTranslation();
+
+  const deleteHandler = (userId) => {
+    props.onDelete(userId);
+  };
+
+  let content = "No hay usuarios agregados";
+
+  if (props.items.length > 0) {
+    content = props.items.map((user) => (
+      <UserItem
+        onDelete={deleteHandler}
+        key={user.id}
+        id={user.id}
+        name={user.name}
+        age={user.age}
+      />
+    ));
+  }
+
   return (
     <Row>
       <Col md={12} xs={12}>
@@ -11,11 +30,7 @@ const { t } = useTranslation();
           <Card.Header className="bg-primary text-light">
             {t("user-list.title")}
           </Card.Header>
-          <Card.Body>
-            <UserItem name="Leo" age="23" />
-            <UserItem name="Jose" age="32" />
-            <UserItem name="Mateo" age="27" />
-          </Card.Body>
+          <Card.Body>{content}</Card.Body>
         </Card>
       </Col>
     </Row>

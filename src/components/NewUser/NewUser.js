@@ -3,8 +3,12 @@ import { Row, Col, Card } from "react-bootstrap";
 import UseForm from "./UserForm";
 import { useTranslation } from "react-i18next";
 
-const NewUser = () => {
+const NewUser = (props) => {
   const { t } = useTranslation();
+
+  const addHandler = (newUser) => {
+    props.onAddUser(newUser);
+  };
 
   return (
     <Row className="mb-4">
@@ -14,7 +18,7 @@ const NewUser = () => {
             {t("new-user.title")}
           </Card.Header>
           <Card.Body>
-            <UseForm> </UseForm>
+            <UseForm onAddUser={addHandler}> </UseForm>
           </Card.Body>
         </Card>
       </Col>

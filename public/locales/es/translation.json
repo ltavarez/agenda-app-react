@@ -8,10 +8,14 @@
   },
   "user-item": {
     "delete": "Eliminar",
-    "year-text": "años de edad"
+    "year-text": "años de edad",
+    "confirmation-delete": "¿Está seguro que desea borrar este usuario?"
   },
   "user-list": {
     "title": "Listado de usuarios"
-
+  },
+  "globals": {
+    "yes": "Si",
+    "no": "No"
   }
 }
