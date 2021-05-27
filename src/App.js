@@ -5,6 +5,9 @@ import Col from "react-bootstrap/Col";
 import NewUser from "./components/NewUser/NewUser";
 import { Suspense } from "react";
 import UserList from "./components/UserList/UserList";
+import { useTranslation } from "react-i18next";
+import { useAlert } from "react-alert";
+import LanguageSwitcher from "./components/LanguageSwitcher/LanguageSwitcher";
 
 const USER = [
   { id: Math.random().toString(), name: "Leo", age: 27 },
@@ -14,12 +17,16 @@ const USER = [
 
 function App() {
   const [users, setUsers] = useState(USER);
+  const alert = useAlert();
+  const { t } = useTranslation();
 
   const onDeleteHandler = (userId) => {
     setUsers((prevState) => {
       const newUsers = prevState.filter((x) => x.id !== userId);
       return newUsers;
     });
+
+    alert.success(t("globals.message-success"));
   };
 
   const onAddHandler = (newUser) => {
@@ -28,12 +35,15 @@ function App() {
     setUsers((prevState) => {
       return [user, ...prevState];
     });
+
+    alert.success(t("globals.message-success"));
   };
 
   return (
     <Container fluid>
       <Row>
         <Col md={{ span: 6, offset: 3 }}>
+          <LanguageSwitcher />
           <NewUser onAddUser={onAddHandler} />
           <UserList onDelete={onDeleteHandler} items={users} />
         </Col>

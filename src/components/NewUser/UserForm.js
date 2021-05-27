@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, InputGroup } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { useAlert } from "react-alert";
 
 const UserForm = (props) => {
   const [enteredUser, setEnteredUser] = useState("");
   const [enteredAge, setEnteredAge] = useState("");
+  const [validated, setValidated] = useState(false);
 
   const alert = useAlert();
   const { t } = useTranslation();
@@ -13,11 +14,18 @@ const UserForm = (props) => {
   const handlerSubmit = (event) => {
     event.preventDefault();
 
-    const newUser = { name: enteredUser, age: enteredAge };
-    props.onAddUser(newUser);
+    const form = event.currentTarget;
 
-    //alert.error("Oh look, an alert!");
-    reset();
+    if (form.checkValidity() === false) {
+      alert.error(t("globals.message-error"));
+      setValidated(true);
+    } else {
+      const newUser = { name: enteredUser, age: +enteredAge };
+      props.onAddUser(newUser);
+
+      setValidated(false);
+      reset(); 
+    }
   };
 
   const changeUserHandler = (event) => {
@@ -34,23 +42,36 @@ const UserForm = (props) => {
   };
 
   return (
-    <Form onSubmit={handlerSubmit}>
+    <Form noValidate validated={validated} onSubmit={handlerSubmit}>
       <Form.Group className="mb-3" controlId="username">
         <Form.Label> {t("new-user.username")}</Form.Label>
-        <Form.Control
-          onChange={changeUserHandler}
-          value={enteredUser}
-          type="text"
-        />
+        <InputGroup hasValidation>
+          <Form.Control
+            onChange={changeUserHandler}
+            value={enteredUser}
+            type="text"
+            required
+          />
+          <Form.Control.Feedback type="invalid">
+            {t("user-form-validation.username-validation-message")}
+          </Form.Control.Feedback>
+        </InputGroup>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="age">
         <Form.Label> {t("new-user.age")}</Form.Label>
-        <Form.Control
-          onChange={changeAgeHandler}
-          value={enteredAge}
-          type="number"
-        />
+        <InputGroup hasValidation>
+          <Form.Control
+            onChange={changeAgeHandler}
+            value={enteredAge}
+            type="number"
+            min="1"
+            required
+          />
+          <Form.Control.Feedback type="invalid">
+            {t("user-form-validation.age-validation-message")}
+          </Form.Control.Feedback>
+        </InputGroup>
         <Form.Text className="text-muted">{t("new-user.in-year")}</Form.Text>
       </Form.Group>
 

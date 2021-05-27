@@ -1,5 +1,29 @@
 {
-  "greeting": {
-    "hello": "Hello"
+  "new-user": {
+    "title": "Add new user",
+    "username": "Username",
+    "age": "Age",
+    "in-year": "In years",
+    "add-user": "Add user"
+  },
+  "user-item": {
+    "delete": "Remove",
+    "year-text": "years old",
+    "confirmation-delete": "Are you sure you want to delete this user?"
+  },
+  "user-list": {
+    "title": "List of users",
+    "not-users": "No registered users"
+  },
+  "globals": {
+    "yes": "Yes",
+    "no": "No",
+    "message-error": "Oops, an error has occurred",
+    "message-success": "The operation was successful",
+    "select-language": "Select language"
+  },
+  "user-form-validation": {
+    "username-validation-message": "You must enter a username",
+    "age-validation-message": "You must enter an age and it must be greater than 0"
   }
 }

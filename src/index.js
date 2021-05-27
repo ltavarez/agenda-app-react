@@ -10,8 +10,8 @@ import "./i18n";
 
 // optional configuration
 const options = {
-  position: positions.TOP_CENTER,
-  timeout: 5000,
+  position: positions.TOP_RIGHT,
+  timeout: 2500,
   offset: "30px",
   transition: transitions.SCALE,
 };

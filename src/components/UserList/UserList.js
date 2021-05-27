@@ -9,7 +9,7 @@ const UserList = (props) => {
     props.onDelete(userId);
   };
 
-  let content = "No hay usuarios agregados";
+  let content = t("user-list.not-users");
 
   if (props.items.length > 0) {
     content = props.items.map((user) => (

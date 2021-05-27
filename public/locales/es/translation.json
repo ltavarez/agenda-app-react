@@ -12,10 +12,18 @@
     "confirmation-delete": "¿Está seguro que desea borrar este usuario?"
   },
   "user-list": {
-    "title": "Listado de usuarios"
+    "title": "Listado de usuarios",
+    "not-users": "No hay usuarios registrado"
   },
   "globals": {
     "yes": "Si",
-    "no": "No"
+    "no": "No",
+    "message-error": "Oops, ha ocurrido un error",
+    "message-success": "La operación fue exitosa",
+    "select-language":"Selecciona el idioma"
+  },
+  "user-form-validation":{
+    "username-validation-message": "Debe introducir un nombre de usuario",
+    "age-validation-message": "Debe introducir una edad y la misma debe ser superior a 0"
   }
 }
