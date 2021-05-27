@@ -1,0 +1,17 @@
+{
+  "new-user": {
+    "title": "Agregar nuevo usuario",
+    "username": "Nombre de usuario",
+    "age": "Edad",
+    "in-year": "En años",
+    "add-user": "Agregar usuario"
+  },
+  "user-item": {
+    "delete": "Eliminar",
+    "year-text": "años de edad"
+  },
+  "user-list": {
+    "title": "Listado de usuarios"
+
+  }
+}
